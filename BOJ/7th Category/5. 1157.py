@@ -1,6 +1,6 @@
 import sys
 
-word = sys.stdin.readline().rstrip()
+word = sys.stdin.readline().rstrip().upper()
 freq = dict()
 
 for alphabet in word:
@@ -9,13 +9,15 @@ for alphabet in word:
     else:
         freq[alphabet] = 1
 
-print(freq)
-word = list(freq.keys())
-f = list(freq.values())
+freqCount = 0
+freqChar = ''
 
+for key, value in freq.items():
+    if freqCount < value:
+        freqCount = value
+        freqChar = key
+    elif freqCount == value:
+        freqCount = value
+        freqChar = '?'
 
-
-print(word)
-print(f)
-
-print(alphabet.find(max(freq.keys())))
+print(freqChar)
