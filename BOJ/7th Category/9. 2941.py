@@ -1,22 +1,14 @@
 import sys
 
-word = sys.stdin.readline()
-count = 0
+word = sys.stdin.readline().rstrip()
+croatian = ['c=', 'c-', 'dz=', 'd-', 'lj', 'nj', 's=', 'z=']
+# 크로아티아 알파벳을 변경해서 입력하는 과정에 집중하는 것이 아니라
+# 달랐던 알파벳 묶음을 검색해서 해당 묶음이 한 알파벳일 경우
+# 갯수를 바로 측정해주도록 함
 
-for i in range(len(word)):
-    if word[i] == 'c' or word[i] == 's' or word[i] == 'z':
-        if word[i+1] == '=':
-            count += 1
-    elif word[i] == 'c' or word[i] == 'd':
-        if word[i+1] == '-':
-            count += 1
-    elif word[i] == 'l' or word[i] == 'n' and word[i+1] == 'j':
-        count += 1
-    elif word[i] == 'd' and word[i+1] == 'z' and word[i+2] == '=':
-        count += 1
-    # else:
-    #     count += 1
+for i in croatian:
+    word = word.replace(i, '*')
 
-print(count)
-
+# 변형된(원래 크로아티아어 상의) 알파벳 개수 + 실제 알파벳 개수 count
+print(len(word))
 
