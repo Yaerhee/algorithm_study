@@ -8,10 +8,10 @@ for i in range(3):
     x.append(result_x)
     y.append(result_y)
 
-for j in range(3):
+for i in range(3):
     if x.count(x[i]) == 1:
-        result_x = x[j]
+        result_x = x[i]
     if y.count(y[i]) == 1:
-        result_y = y[j]
+        result_y = y[i]
 
 print(result_x, result_y)
