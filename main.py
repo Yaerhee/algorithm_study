@@ -1,29 +1,17 @@
+import math
 import sys
 
-N = int(sys.stdin.readline())
+while True:
+    a, b, c = list(map(int, sys.stdin.readline().split()))
 
-# N-1 (우선 숫자 1 어치는 빼야 하니까)
-# math.ceil(N / 6)... ㅋㅋㅋ 좋아 신박했어
+    if a == 0 and b == 0 and c == 0:
+        break
 
-# N = 58이 있다고 치면... 58 - (1 + 6*1 + 6*2 + 6*3 ...)
-# N이 0 이하일 경우 길찾기 성공!
-
-# 기존 풀이
-# count = 0
-# while N > 0:
-#     if count == 0:
-#         N = N - 1
-#         count += 1
-#     N = N - 6 * count
-#     count += 1
-#
-# print(count)
-
-# 풀이 갈아엎음 -_-
-routes = 1
-count = 1
-while N > routes:
-    routes += 6 * count
-    count += 1
-
-print(count)
+    if a * a + b * b == c * c:
+        print('right')
+    elif a * a == b * b + c * c:
+        print('right')
+    elif b * b == a * a + c * c:
+        print('right')
+    else:
+        print('wrong')
